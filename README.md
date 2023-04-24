@@ -1,7 +1,7 @@
 # Projeto labecommerce
 
 É o primeiro projeto do back-end, onde praticamos toda a base de criação de uma API vinculada a um banco de dados real.<br>
-Ele tem uma particularidade: seus requisitos são implementados ao longo dos exercícios pós aula. Isso significa que caso você siga o desenvolvimento das aulas, quando chegar na data de entrega já terá um projeto funcional e quase pronto para entrega.
+
 
 ## Conteúdos abordados
 
@@ -73,10 +73,10 @@ Cadastra uma nova pessoa.
 // POST /users
 // body JSON
 {
-    "id": "u003",
-    "name": "Astrodev",
-    "email": "astrodev@email.com",
-    "password": "astrodev00"
+    "id":"12",
+    "name":"Gil",
+    "email":"gil@email.com",
+    "password":"labenu123"
 }
 
 // Response
@@ -93,11 +93,11 @@ Cadastra um novo produto.
 // POST /products
 // body JSON
 {
-    "id": "prod003",
-    "name": "Teclado gamer",
-    "price": 200,
-    "description": "Teclado mecânico com numpad",
-    "imageUrl": "https://picsum.photos/seed/Teclado%20gamer/400"
+    "id": "123",
+    "name": "Caixa bag",
+    "price": 20,
+    "category": "duplex",
+    "imageUrl": "img11"
 }
 
 // Response
@@ -116,53 +116,102 @@ Retorna todos os produtos cadastrados.
 // Response
 // status 200 OK
 [
-    {
-        id: "prod001",
-        name: "Mouse gamer",
-        price: 250,
-        description: "Melhor mouse do mercado!",
-        imageUrl: "https://picsum.photos/seed/Mouse%20gamer/400"
-    },
-    {
-        id: "prod002",
-        name: "Monitor",
-        price: 900,
-        description: "Monitor LED Full HD 24 polegadas",
-        imageUrl: "https://picsum.photos/seed/Monitor/400"
-    },
-    {
-        id: "prod003",
-        name: "Teclado gamer",
-        price: 200,
-        description: "Teclado mecânico com numpad",
-        imageUrl: "https://picsum.photos/seed/Teclado%20gamer/400"
-    }
+  {
+    "id": "011",
+    "name": "Caixa de doce",
+    "price": 50,
+    "category": "Kraft",
+    "image_url": "img0"
+  },
+  {
+    "id": "022",
+    "name": "Caixa de mudança",
+    "price": 22,
+    "category": "Microondulado",
+    "image_url": "img1"
+  },
+  {
+    "id": "033",
+    "name": "Caixa c/ visor 10 x 20",
+    "price": 5,
+    "category": "Duplex",
+    "image_url": "img2"
+  },
+  {
+    "id": "044",
+    "name": "Sacola",
+    "price": 2,
+    "category": "Kraft",
+    "image_url": "img3"
+  },
+  {
+    "id": "055",
+    "name": "Caixa c/ visor 25 x 35",
+    "price": 12,
+    "category": "Kraft",
+    "image_url": "img4"
+  },
+  {
+    "id": "066",
+    "name": "Caixa estampada 20 x 30",
+    "price": 10,
+    "category": "Duplex",
+    "image_url": "img5"
+  },
+  {
+    "id": "077",
+    "name": "Caixa p/ ovo de colher 350g",
+    "price": 4,
+    "category": "Kraft",
+    "image_url": "img6"
+  },
+  {
+    "id": "088",
+    "name": "Caixa p/ tranporte (Correios) 30 x 20 x 10",
+    "price": 8,
+    "category": "Microondulado",
+    "image_url": "img7"
+  },
+  {
+    "id": "099",
+    "name": "Caixa box 20 x 20 x 10",
+    "price": 12,
+    "category": "Kraft",
+    "image_url": "img8"
+  },
+  {
+    "id": "100",
+    "name": "Caixa surpresa 27 x 27",
+    "price": 20,
+    "category": "Cartonada",
+    "image_url": "img9"
+  },
+  {
+    "id": "123",
+    "name": "Caixa bag",
+    "price": 20,
+    "category": "duplex ",
+    "image_url": "img11"
+  }
 ]
 ```
 
 ## Get all products funcionalidade 2
-Caso seja enviada uma query params (q) deve ser retornado o resultado da busca de produtos por nome.
+Caso seja enviada uma pathparams deve ser retornado o resultado da busca de produtos pelo id.
 ```typescript
 // Request
-// query params = q
-// GET /products?q=gamer
+// path params = :id
+// GET /products/077
 
 // Response
 // status 200 OK
 [
     {
-        id: "prod001",
-        name: "Mouse gamer",
-        price: 250,
-        description: "Melhor mouse do mercado!",
-        imageUrl: "https://picsum.photos/seed/Mouse%20gamer/400"
-    },
-    {
-        id: "prod003",
-        name: "Teclado gamer",
-        price: 200,
-        description: "Teclado mecânico com numpad",
-        imageUrl: "https://picsum.photos/seed/Teclado%20gamer/400"
+    "id": "077",
+    "name": "Caixa p/ ovo de colher 350g",
+    "price": 4,
+    "category": "Kraft",
+    "image_url": "img6"
     }
 ]
 ```
@@ -176,54 +225,42 @@ Edita um produto existente.
 // PUT /products/prod003
 // body JSON
 {
-    "id": "prod0033",
-    "name": "Teclado gamer RGB",
-    "price": 300,
-    "description": "Teclado mecânico com RGB e numpad",
-    "imageUrl": "https://picsum.photos/seed/Teclado%20gamer%20RGB/400"
-}
+        "id": "099",
+        "name": "Caixa box 20 x 20 x 10",
+        "price": 12,
+        "category": "Kraft",
+        "image_url": "img8"
+}'
 
 // Response
 // status 200 OK
 {
-    message: "Produto atualizado com sucesso"
+  "message": " Produto alterado com sucesso",
+  "user": {
+    "id": "099",
+    "name": "Caixa box 20 x 20 x 10",
+    "price": 12,
+    "category": "Kraft"
+  }
 }
 ```
 
 ## Create purchase
-Cadastra um novo pedido. Como dica, o exercício 1 da aula de [Relações em SQL II](https://github.com/labenuexercicios/relacoes-sql-II-exercicios) é uma boa referência.
-```typescript
+Cadastra um novo pedido. 
 // Request
 // POST /purchases
 // body JSON
-{
-    "id": "pur001",
-    "buyer": "u001",
-    "totalPrice": 1400,
-    "products": [
-        {
-            "id": "prod001",
-            "name": "Mouse gamer",
-            "price": 250,
-            "description": "Melhor mouse do mercado!",
-            "imageUrl": "https://picsum.photos/seed/Mouse%20gamer/400",
-            "quantity": 2
-        },
-        {
-            "id": "prod002",
-            "name": "Monitor",
-            "price": 900,
-            "description": "Monitor LED Full HD 24 polegadas",
-            "imageUrl": "https://picsum.photos/seed/Monitor/400",
-            "quantity": 1
-        }
-    ]
-}
+ {
+        "id": "c001",
+        "buyer_id": "05",
+        "total_price": 15,
+        "paid": 2
+}'
 
 // Response
 // status 201 CREATED
 {
-    message: "Pedido realizado com sucesso"
+  "message": "Compra realizada com sucesso!"
 }
 ```
 
@@ -237,7 +274,7 @@ Deleta um pedido existente.
 // Response
 // status 200 OK
 {
-    message: "Pedido cancelado com sucesso"
+    message: "Compra deletada com sucesso"
 }
 ```
 
@@ -251,33 +288,26 @@ Retorna os dados de uma compra, incluindo a lista de produtos da mesma.
 // Response
 // status 200 OK
 {
-    purchaseId: "pur001",
-    buyerId: "u001",
-    buyerName: "Fulano",
-    buyerEmail: "fulano@email.com",
-    totalPrice: 1400,
-    createdAt: "2023-01-15 16:24:54",
-    paid: 0,
-    products: [
-        {
-            id: "prod001",
-            name: "Mouse gamer",
-            price: 250,
-            description: "Melhor mouse do mercado!",
-            imageUrl: "https://picsum.photos/seed/Mouse%20gamer/400",
-            quantity: 2
-        },
-        {
-            id: "prod002",
-            name: "Monitor",
-            price: 900,
-            description: "Monitor LED Full HD 24 polegadas",
-            imageUrl: "https://picsum.photos/seed/Monitor/400",
-            quantity: 1
-        }
-    ]
+  "idDaCompra": "c003",
+  "valorDaCompra": 50,
+  "criadaEm": "2023-04-23 23:39:52",
+  "status": 0,
+  "idDoComprador": "03",
+  "emailComprador": "carol@email.com",
+  "nomeDoComprador": "carol",
+  "paid": true,
+  "productList": [
+    {
+      "idProduto": "088",
+      "nomaProduto": "Caixa p/ tranporte (Correios) 30 x 20 x 10",
+      "preçoProduto": 8,
+      "category": "Microondulado",
+      "image_url": "img7",
+      "quantity": 6
+    }
+  ]
 }
 ```
 
 # Documentação para referência (como deve ficar)
-https://documenter.getpostman.com/view/21151478/2s8ZDeSdbz
+https://documenter.getpostman.com/view/25390008/2s93Y5PKr7
